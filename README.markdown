@@ -1,4 +1,4 @@
-# SeoHelperYohaha
+# SeoHelper
 
 SeoHelper is a set of helpers for rendering page-specific `<title>` tag, common `<meta />` tags and `<link rel='image_src' />` tag.
 
