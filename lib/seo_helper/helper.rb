@@ -31,7 +31,7 @@ module SeoHelper
       tag(:meta, { :name => "robots", :content => content })
     end
 
-    attr_reader :page_title, :page_description, :page_image
+    attr_reader :page_title, :page_description, :page_keywords, :page_image
 
     def render_page_title_tag
       # fallback to site_name if @page_title has never been set
@@ -50,6 +50,11 @@ module SeoHelper
     def render_page_description_meta_tag
       return if SeoHelper.configuration.skip_blank && page_description.blank?
       description_meta_tag(page_description || SeoHelper.configuration.default_page_description)
+    end
+    
+    def render_page_keywords_meta_tag
+      return if SeoHelper.configuration.skip_blank && page_keywords.blank?
+      keywords_meta_tag(page_keywords || SeoHelper.configuration.default_page_keywords)
     end
 
     def render_page_image_link_tag
@@ -72,6 +77,10 @@ module SeoHelper
 
     def set_page_description(description)
       @page_description = description
+    end
+    
+    def set_page_keywords(keywords)
+      @page_keywords = keywords
     end
 
     def set_page_image(image_src)
